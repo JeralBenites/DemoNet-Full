@@ -1,0 +1,56 @@
+﻿@model SolIntermedio.Entidades.Request.UsuarioAutenticaRequest
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<p class="login-box-msg">Ingresa tus credenciales</p>
+<form action="@Url.Action("Index", "Autentica")" method="post">
+    <div class="form-group has-feedback">
+        <input type="email" class="form-control" name="Correo" value="@Model.Correo" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="Clave" value="@Model.Clave" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="checkbox icheck">
+                <label>
+                    <input type="checkbox"> Remember Me
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+    </div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="row">
+            <div class="col-xs-12 alert alert-warning dismissible">
+                @Html.ValidationSummary(false, "Revise lo siguiente")
+            </div>
+        </div>
+    }
+
+</form>
+@*<div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+            <i class="fa fa-facebook"></i> Sign in using
+            Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+            <i class="fa fa-google-plus"></i> Sign in using
+            Google+
+        </a>
+    </div>*@
+<!-- /.social-auth-links -->
+
+<a href="@Url.Action("Create", "Usuario")" 
+   class="text-center">registr nuevo usuario</a>
+
